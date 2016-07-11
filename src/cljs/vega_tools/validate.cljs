@@ -4,7 +4,7 @@
    cljsjs.tv4)
   (:require-macros [vega-tools.macros :refer [inline-resource]]))
 
-(def ^:private vega-schema (js/JSON.parse (inline-resource "vega/vega-schema.json")))
+(def ^:private vega-schema (js/JSON.parse (inline-resource "vega_tools/vega-schema.json")))
 
 (defn ^:private error->map
   [error]

@@ -12,4 +12,4 @@ npm install
 npm run schema
 popd
 
-cp ext/vega/vega-schema.json resources/vega/
+cp ext/vega/vega-schema.json resources/vega_tools/
