@@ -1,7 +1,6 @@
 (ns vega-tools.validate
   "Tools for validating a Vega specification."
-  (:require
-   cljsjs.tv4)
+  (:require cljsjs.tv4)
   (:require-macros [vega-tools.macros :refer [inline-resource]]))
 
 (def ^:private vega-schema (js/JSON.parse (inline-resource "vega_tools/vega-schema.json")))
