@@ -6,7 +6,9 @@
                   [adzerk/boot-cljs            "1.7.228-1" :scope "test"]
                   [adzerk/boot-test            "1.1.2"     :scope "test"]
                   [crisptrutski/boot-cljs-test "0.2.1"     :scope "test"]
-                  [cljsjs/tv4                  "1.2.7-0"]])
+                  [cljsjs/tv4                  "1.2.7-0"]
+                  [cljsjs/vega                 "2.6.0-0"]
+                  [funcool/promesa             "1.4.0"]])
 
 (def +version+ "0.1.0-SNAPSHOT")
 

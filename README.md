@@ -1,11 +1,12 @@
 # vega-tools
 
 Utilities for working with [Vega][vega] visualization grammar in ClojureScript.
-Features:
 
 * Validating a Vega specification against Vega JSON-Schema.
+* Main entry point of Vega runtime, `vg.parse.spec`, wrapped into [Promesa][promesa] promises.
 
 [vega]: https://vega.github.io/vega/
+[promesa]: https://github.com/funcool/promesa
 
 
 ## License
