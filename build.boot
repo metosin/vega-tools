@@ -10,7 +10,7 @@
                   [cljsjs/vega                 "2.6.0-0"]
                   [funcool/promesa             "1.4.0"]])
 
-(def +version+ "0.1.0-SNAPSHOT")
+(def +version+ "0.1.0")
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
@@ -48,3 +48,8 @@
    (pom)
    (jar)
    (install)))
+
+(deftask deploy []
+  (comp
+   (build)
+   (push :repo "clojars" :gpg-sign (not (.endsWith +version+ "-SNAPSHOT")))))
