@@ -18,12 +18,12 @@
  '[crisptrutski.boot-cljs-test :refer [test-cljs]])
 
 (task-options!
- pom {:project 'miikka/vega-tools
+ pom {:project 'metosin/vega-tools
       :version +version+
       :description "Utilities for working with Vega specifications"
       :license {"Eclipse Public License" "http://www.eclipse.org/legal/epl-v10.html"}
-      :url "https://github.com/miikka/vega-tools/"
-      :scm {:url "https://github.com/miikka/vega-tools/"}})
+      :url "https://github.com/metosin/vega-tools/"
+      :scm {:url "https://github.com/metosin/vega-tools/"}})
 
 (deftask testing []
   (merge-env! :source-paths #{"test/cljs" "test/clj"}

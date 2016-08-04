@@ -45,6 +45,6 @@ Utilities for working with [Vega][vega] visualization grammar in ClojureScript.
 
 ### vega-tools
 
-Copyright © 2016 [Miikka Koskinen](https://miikka.me/).
+Copyright © 2016 [Metosin Oy](http://www.metosin.fi/).
 
 Distributed under the Eclipse Public License, the same as Clojure.
