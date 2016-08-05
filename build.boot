@@ -4,7 +4,7 @@
   :dependencies '[[org.clojure/clojure         "1.8.0"     :scope "provided"]
                   [org.clojure/clojurescript   "1.9.89"    :scope "provided"]
                   [adzerk/boot-cljs            "1.7.228-1" :scope "test"]
-                  [adzerk/boot-test            "1.1.2"     :scope "test"]
+                  [metosin/boot-alt-test       "0.1.0"     :scope "test"]
                   [crisptrutski/boot-cljs-test "0.2.1"     :scope "test"]
                   [cljsjs/tv4                  "1.2.7-0"]
                   [cljsjs/vega                 "2.6.0-0"]
@@ -14,8 +14,8 @@
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
- '[adzerk.boot-test :refer :all]
- '[crisptrutski.boot-cljs-test :refer [test-cljs]])
+ '[crisptrutski.boot-cljs-test :refer [test-cljs]]
+ '[metosin.boot-alt-test :refer [alt-test]])
 
 (task-options!
  pom {:project 'metosin/vega-tools
@@ -30,18 +30,16 @@
               :resource-paths #{"test/resources"})
   identity)
 
-(deftask test-clj []
+(deftask run-tests
+  [f fail bool]
   (comp (testing)
-        (test)))
+        (alt-test :fail fail)
+        (test-cljs :exit? fail)))
 
-(deftask test-once []
-  (comp (testing)
-        (test-cljs)))
-
-(deftask test-auto []
+(deftask dev []
   (comp (testing)
         (watch)
-        (test-cljs)))
+        (run-tests)))
 
 (deftask build []
   (comp
