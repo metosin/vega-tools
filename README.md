@@ -36,6 +36,10 @@ Compare and contrast to [Vega Runtime documentation](https://github.com/vega/veg
                      (.update))))))
 ```
 
+If you want to use Vega with Reagent, see [*Using Stateful JS Components* on re-frame wiki][stateful].
+
+[stateful]: (https://github.com/Day8/re-frame/wiki/Using-Stateful-JS-Components)
+
 ## License
 
 ### vega-schema.json
