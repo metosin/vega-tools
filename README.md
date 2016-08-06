@@ -8,6 +8,33 @@ Utilities for working with [Vega][vega] visualization grammar in ClojureScript.
 [vega]: https://vega.github.io/vega/
 [promesa]: https://github.com/funcool/promesa
 
+## Latest version
+
+    [metosin/vega-tools "0.1.0"]
+
+## Example
+
+Compare and contrast to [Vega Runtime documentation](https://github.com/vega/vega/wiki/Runtime):
+
+```clj
+(ns example
+  (:require [vega-tools.core :refer [validate-and-parse]]
+            [promesa.core :as p]))
+
+(defn main []
+ (let [spec {:width 200 :height 200
+             :marks [{:type "symbol"
+                      :properties {:enter {:size {:value 1000}
+                                           :x {:value 100}
+                                           :y {:value 100}
+                                           :shape {:value "circle"}
+                                           :stroke {:value "red"}}}}]}]
+    (-> (validate-and-parse spec)
+        (p/catch #(js/alert (str "Unable to parse spec:\n\n" %)))
+        (p/then #(-> #js {:el (js/document.getElementById "#chart")}
+                     (%)
+                     (.update))))))
+```
 
 ## License
 
