@@ -31,8 +31,7 @@ Compare and contrast to [Vega Runtime documentation](https://github.com/vega/veg
                                            :stroke {:value "red"}}}}]}]
     (-> (validate-and-parse spec)
         (p/catch #(js/alert (str "Unable to parse spec:\n\n" %)))
-        (p/then #(-> #js {:el (js/document.getElementById "#chart")}
-                     (%)
+        (p/then #(-> (% {:el (js/document.getElementById "#chart")})
                      (.update))))))
 ```
 

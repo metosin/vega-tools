@@ -4,6 +4,10 @@
             [vega-tools.validate :refer [check]]
             [promesa.core :as p]))
 
+(defn- wrap-chart-constructor
+  [chart]
+  (fn [params] (chart (clj->js params))))
+
 (defn parse
   "Parse a Vega specification.
 
@@ -16,7 +20,7 @@
                                   (fn [error chart]
                                     (if error
                                       (reject error)
-                                      (resolve chart))))))))
+                                      (resolve (wrap-chart-constructor chart)))))))))
 
 (defn validate
   "Validate a Vega specification.
