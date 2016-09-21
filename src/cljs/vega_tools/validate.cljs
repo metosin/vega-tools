@@ -1,16 +1,22 @@
 (ns vega-tools.validate
   "Tools for validating a Vega specification."
-  (:require cljsjs.tv4)
+  (:require cljsjs.ajv)
   (:require-macros [vega-tools.macros :refer [inline-resource]]))
 
 (def ^:private vega-schema (js/JSON.parse (inline-resource "vega_tools/vega-schema.json")))
+(def ^:private validator (delay (.compile (js/Ajv.) vega-schema)))
 
 (defn ^:private error->map
   [error]
   {:data-path (.-dataPath error)
    :message (.-message error)
    :schema-path (.-schemaPath error)
-   :code (.-code error)})
+   :keyword (.-keyword error)})
+
+(defn ^:private quiet-ajv [schema data]
+  (with-redefs [js/console #js {:log (constantly nil)}]
+    (when-not (@validator (clj->js data))
+      (array-seq (.-errors @validator)))))
 
 (defn check
   "Return nil if x is a valid Vega specification; otherwise, return a vector
@@ -25,11 +31,8 @@
   For tv4 error codes, see
   <https://github.com/geraintluff/tv4/blob/master/source/api.js>."
   [x]
-  (let [result (js/tv4.validateMultiple (clj->js x) vega-schema)]
-    (when-not (.-valid result)
-      (assert (empty? (.-missing result))
-              "Vega spec should not reference unknown schemata.")
-      (mapv error->map (.-errors result)))))
+  (when-let [errors (quiet-ajv vega-schema x)]
+    (mapv error->map errors)))
 
 (defn validate
   "Throw an exception if x is not a valid Vega specification; otherwise, return

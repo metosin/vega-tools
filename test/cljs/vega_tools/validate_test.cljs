@@ -4,10 +4,10 @@
   (:require-macros [vega-tools.testing]))
 
 (def background-error
-  {:code 0
-   :message "Invalid type: number (expected string)"
-   :data-path "/background"
-   :schema-path "/allOf/1/properties/background/type"})
+  {:message "should be string"
+   :data-path ".background"
+   :schema-path "#/defs/background/type"
+   :keyword "type"})
 
 (deftest test-check
   (testing "Empty specification is fine."
