@@ -4,7 +4,8 @@
   (:require-macros [vega-tools.macros :refer [inline-resource]]))
 
 (def ^:private vega-schema (js/JSON.parse (inline-resource "vega_tools/vega-schema.json")))
-(def ^:private validator (delay (.compile (js/Ajv.) vega-schema)))
+(def ^:private ajv-options #js {:jsonPointers true :allErrors true})
+(def ^:private validator (delay (.compile (js/Ajv. ajv-options) vega-schema)))
 
 (defn ^:private error->map
   [error]
@@ -30,7 +31,7 @@
   :data-path   -- JSON pointer to the failing data
   :schema-path -- JSON pointer to the failing part of Vega specification schema
   :message     -- human-readable error message
-  :code        -- numeric tv4 error code
+  :keyword     -- the problematic validation keyword (type/maximum/minimum/...)
 
   For tv4 error codes, see
   <https://github.com/geraintluff/tv4/blob/master/source/api.js>."

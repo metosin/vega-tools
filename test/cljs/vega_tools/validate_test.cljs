@@ -5,7 +5,7 @@
 
 (def background-error
   {:message "should be string"
-   :data-path ".background"
+   :data-path "/background"
    :schema-path "#/defs/background/type"
    :keyword "type"})
 
