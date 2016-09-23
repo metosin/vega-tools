@@ -13,6 +13,10 @@
    :schema-path (.-schemaPath error)
    :keyword (.-keyword error)})
 
+;; vega-schema extends refs with additional keywords and ajv issues warnings
+;; about this. We rebind js/console to supress the warnings. Once
+;; <https://github.com/epoberezkin/ajv/issues/303> is resolved, the rebinding
+;; hack can be removed.
 (defn ^:private quiet-ajv [schema data]
   (with-redefs [js/console #js {:log (constantly nil)}]
     (when-not (@validator (clj->js data))
