@@ -2,13 +2,13 @@
   :source-paths #{"src/clj" "src/cljs"}
   :resource-paths #{"src/clj" "src/cljs" "resources"}
   :dependencies '[[org.clojure/clojure         "1.8.0"     :scope "provided"]
-                  [org.clojure/clojurescript   "1.9.89"    :scope "provided"]
+                  [org.clojure/clojurescript   "1.9.229"   :scope "provided"]
                   [adzerk/boot-cljs            "1.7.228-1" :scope "test"]
-                  [metosin/boot-alt-test       "0.1.0"     :scope "test"]
+                  [metosin/boot-alt-test       "0.1.2"     :scope "test"]
                   [crisptrutski/boot-cljs-test "0.2.1"     :scope "test"]
                   [cljsjs/ajv                  "4.7.7-0"]
                   [cljsjs/vega                 "2.6.0-0"]
-                  [funcool/promesa             "1.4.0"]])
+                  [funcool/promesa             "1.5.0"]])
 
 (def +version+ "0.2.0-SNAPSHOT")
 
