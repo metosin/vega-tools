@@ -10,7 +10,7 @@ Utilities for working with [Vega][vega] visualization grammar in ClojureScript.
 
 ## Latest version
 
-    [metosin/vega-tools "0.1.0"]
+    [metosin/vega-tools "0.2.0"]
 
 ## Example
 
