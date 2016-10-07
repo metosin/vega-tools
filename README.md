@@ -39,6 +39,11 @@ If you want to use Vega with Reagent, see [*Using Stateful JS Components* on re-
 
 [stateful]: https://github.com/Day8/re-frame/wiki/Using-Stateful-JS-Components
 
+## Ideas and TODOs
+
+* Nicer error messages for validation errors
+* ClojureScript DSL for the Vega expression language
+
 ## License
 
 ### vega-schema.json
