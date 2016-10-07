@@ -6,7 +6,7 @@
                   [adzerk/boot-cljs            "1.7.228-1" :scope "test"]
                   [metosin/boot-alt-test       "0.1.0"     :scope "test"]
                   [crisptrutski/boot-cljs-test "0.2.1"     :scope "test"]
-                  [cljsjs/ajv                  "4.7.2-0"]
+                  [cljsjs/ajv                  "4.7.7-0"]
                   [cljsjs/vega                 "2.6.0-0"]
                   [funcool/promesa             "1.4.0"]])
 

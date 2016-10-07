@@ -4,7 +4,7 @@
   (:require-macros [vega-tools.macros :refer [inline-resource]]))
 
 (def ^:private vega-schema (js/JSON.parse (inline-resource "vega_tools/vega-schema.json")))
-(def ^:private ajv-options #js {:jsonPointers true :allErrors true})
+(def ^:private ajv-options #js {:jsonPointers true :allErrors true :extendRefs true})
 (def ^:private validator (delay (.compile (js/Ajv. ajv-options) vega-schema)))
 
 (defn ^:private error->map
@@ -14,14 +14,9 @@
    :schema-path (.-schemaPath error)
    :keyword (.-keyword error)})
 
-;; vega-schema extends refs with additional keywords and ajv issues warnings
-;; about this. We rebind js/console to supress the warnings. Once
-;; <https://github.com/epoberezkin/ajv/issues/303> is resolved, the rebinding
-;; hack can be removed.
-(defn ^:private quiet-ajv [schema data]
-  (with-redefs [js/console #js {:log (constantly nil)}]
-    (when-not (@validator (clj->js data))
-      (array-seq (.-errors @validator)))))
+(defn ^:private run-ajv [schema data]
+  (when-not (@validator (clj->js data))
+    (array-seq (.-errors @validator))))
 
 (defn check
   "Return nil if x is a valid Vega specification; otherwise, return a vector
@@ -36,7 +31,7 @@
   For tv4 error codes, see
   <https://github.com/geraintluff/tv4/blob/master/source/api.js>."
   [x]
-  (when-let [errors (quiet-ajv vega-schema x)]
+  (when-let [errors (run-ajv vega-schema x)]
     (mapv error->map errors)))
 
 (defn validate
