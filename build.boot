@@ -10,7 +10,7 @@
                   [cljsjs/vega                 "2.6.0-0"]
                   [funcool/promesa             "1.5.0"]])
 
-(def +version+ "0.2.0")
+(def +version+ "0.3.0-SNAPSHOT")
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
