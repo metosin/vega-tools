@@ -1,3 +1,7 @@
+# Unreleased
+
+* Hiccup-style syntax for the expression language.
+
 # 0.2.0 (2016-10-07)
 
 * **BREAKING**: Wrap the chart constructor, so you do not need to call `clj->js`/`#js` when creating the chart.
