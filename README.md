@@ -5,6 +5,8 @@ Utilities for working with [Vega][vega] visualization grammar in ClojureScript.
 * Validating a Vega specification against Vega JSON-Schema.
 * Main entry point of Vega runtime, `vg.parse.spec`, wrapped into [Promesa][promesa] promises.
 
+See the [example project](https://github.com/miikka/vega-tools-example).
+
 [vega]: https://vega.github.io/vega/
 [promesa]: https://github.com/funcool/promesa
 
