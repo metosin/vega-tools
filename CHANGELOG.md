@@ -1,6 +1,6 @@
 # Unreleased
 
-* Hiccup-style syntax for the expression language.
+* ClojureScript style syntax for the expression language.
 
 # 0.2.0 (2016-10-07)
 
